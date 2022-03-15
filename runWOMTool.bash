@@ -9,10 +9,11 @@ WDL="$2"
 export JAVA_OPTS="-Dconfig.file=/scratch1/fs1/cruchagac/Workflows/testMJ.conf"
 #LSF_DOCKER_ENV_FILE="/scratch1/fs1/cruchagac/${USER}/c1in/envs/${FULLSMID}.env" \
 bsub -g ${JOB_GROUP} \
+-Is \
 -J ${USER}/cromwell/${WDL} \
 -n 1 \
 -R 'rusage[mem=8000]' \
--M 8000
+-M 8000 \
 -G compute-cruchagac \
 -q general-interactive \
--a 'docker(broadinstitute/womtool:77)' ${MODE} ${WDL}
+-a 'docker(broadinstitute/womtool:77)' java -Dconfig.file=/scratch1/fs1/cruchagac/Workflows/testMJ.conf -jar womtool.jar ${MODE} ${WDL}
