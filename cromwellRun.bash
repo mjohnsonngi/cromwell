@@ -11,9 +11,8 @@ LSF_DOCKER_VOLUMES="/storage1/fs1/cruchagac/Active:/storage1/fs1/cruchagac/Activ
 /scratch1/fs1/cruchagac:/scratch1/fs1/cruchagac" \
 bsub -g ${JOB_GROUP} \
 -J ${USER}/cromwell/${WDL} \
--Is \
 -n 1 \
 -R 'select[port8644=1]' \
 -G compute-cruchagac \
--q general-interactive \
+-q general \
 -a 'docker(broadinstitute/cromwell:77)' java ${JAVA_OPTS} -jar /app/cromwell.jar run $@
