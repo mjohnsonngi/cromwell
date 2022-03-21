@@ -13,6 +13,5 @@ bsub -g ${JOB_GROUP} \
 -n 1 \
 -R 'select[port8644=1]' \
 -G compute-cruchagac \
--q general-interactive \
--Is \
+-q general \
 -a 'docker(broadinstitute/cromwell:77)' /opt/java/openjdk/bin/java $JAVA_OPTS -jar /app/cromwell.jar run $@
